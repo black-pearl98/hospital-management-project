@@ -15,7 +15,7 @@
     "express-session": "^1.16.2",
     "html-to-pdf": "^0.1.11",
     "html2canvas": "^1.0.0-rc.3",
-    "mongoose": "^5.5.15",
+    "mongoose": "^5.7.5",
     "mongoose-unique-validator": "^2.0.3",
     "nodemailer": "^6.2.1",
     "serve-favicon": "^2.5.0"
