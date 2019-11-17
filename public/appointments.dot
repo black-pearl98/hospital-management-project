@@ -1,0 +1,126 @@
+---
+layout: index.dot
+title: appointments
+---
+ 
+ [[##section1:
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true" data-ng-init="Appointmentpage()" id="mainbody">
+#]]
+
+[[##section2:
+	  
+	
+	
+	<!-- table for details of all patients-->
+	
+	
+	
+      <table id="dtMaterialDesignExample" class="table table-striped" cellspacing="0"  style="margin-left: 20%; margin-top: 5%; width: 79%;">
+  <thead>
+    <tr>
+      <th class="th-sm">Doctor ID
+      </th>
+      <th class="th-sm">Doctor Name
+      </th>
+      
+      <th class="th-sm">Patient ID
+      </th>
+      <th class="th-sm">Patient Name
+      </th>
+      <th class="th-sm">Appointment Date
+      </th>
+	  <th class="th-sm">Appointment Time
+      </th>
+	  [[? model.userDetails.role=="operator" ]]
+			<th class="th-sm"><button type="button" class="btn btn-primary" style="float: right;" ng-click="addnewappointment()">Add</button>
+			</th>
+      [[?]]
+	  
+	  
+    </tr>
+  </thead>
+  <tbody>
+	
+  
+    <tr ng-repeat="appointment in allAppointments">
+      <td>{{appointment.doctorId}}</td>
+      <td>{{appointment.doctorName}}</td>
+      
+      <td>{{appointment.patientId}}</td>
+      <td>{{appointment.patientName}}</td>
+      <td>{{appointment.appointmentDate}}</td>
+	  <td>{{appointment.appointmentTime}}</td>
+    </tr>
+    
+  </tbody>
+  
+  
+</table>
+<!-- end of table -->
+
+
+<!-- Modal for add/edit appointments-->
+
+			<div class="modal fade" id="userdialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog " role="document">
+					<div class="modal-content">
+					<div class="modal-header text-center">
+						<h4 id="modaltitle" class="modal-title w-100 font-weight-bold">Add Appointment</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
+							<div class="md-form mx-3">
+								<i class="fas fa-plus-square prefix active"></i>
+                                <select class="mdb-select  mx-4" ng-model="appointmentDetails.doctorId" ng-change="showtime()">
+								<option  value=""  disabled selected>Select Doctor ID</option>
+                                 <option ng-repeat="x in allDoctors">{{x.id}}</option>
+								</select>
+								
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-ambulance prefix active"></i>
+                                <select class="mdb-select  mx-4" ng-model="appointmentDetails.patientId" >
+								<option  value=""  disabled selected>Select Patient ID</option>
+                                <option ng-repeat="x in allPatients">{{x.id}}</option>
+								</select>
+								
+							</div>
+							<div class="md-form mx-3">
+								<i class="far fa-calendar prefix active"></i>
+								<input type="text" id="orangeForm-adminid" class="form-control datepicker" ng-model="appointmentDetails.appointmentDate" ng-change="showtime()">
+								<label  for="orangeForm-adminid">Appointment date</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="far fa-clock prefix active"></i>
+                                <select class="mdb-select  mx-4" ng-model="appointmentDetails.appointmentTime" >
+                                    <option  value=""  disabled selected>Select Time</option>
+                                    <option value="9 am to 10 am" ng-disabled=allTimes['nine'].displayTime>9 am to 10am</option>
+                                    <option value="10 am to 11 am" ng-disabled=allTimes['ten'].displayTime>10 am to 11am</option>
+                                    <option value="11 am to 12 pm" ng-disabled=allTimes['eleven'].displayTime>11 am to 12pm</option>
+                                    <option value="12 pm to 1 pm" ng-disabled=allTimes['twelve'].displayTime>12 pm to 1pm</option>
+                                    <option value="1 pm to 2 pm" ng-disabled=allTimes['thirteen'].displayTime>1 pm to 2pm</option>
+                                    <option value="3 pm to 4 pm" ng-disabled=allTimes['fifteen'].displayTime>3 pm to 4pm</option>
+                                    <option value="4 pm to 5 pm" ng-disabled=allTimes['sixteen'].displayTime>4 pm to 5pm</option>
+                                    <option value="5 pm to 6 pm" ng-disabled=allTimes['seventeen'].displayTime>5 pm to 6pm</option>
+                                    <option value="6 pm to 7 pm" ng-disabled=allTimes['eighteen'].displayTime>6 pm to 7pm</option>
+								</select>
+							</div>
+						
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-deep-orange" id="addbutton" ng-click="addappointment()">Add</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End Modal for add/edit doctor-->
+
+
+	
+	
+	
+#]]
+ 

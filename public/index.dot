@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- saved from url=(0076)https://mdbootstrap.com/previews/docs/latest/html/skins/light-blue-skin.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Required meta tags always come first -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>[[= layout.title ]]</title>
+
+    <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  
+
+    <!-- Bootstrap core CSS -->
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Material Design Bootstrap -->
+    <link href="./css/mdb.min.css" rel="stylesheet">
+	<link href="./css/style1.css" rel="stylesheet">
+	
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+<script  src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+<style type="text/css">/* Chart.js */
+@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}</style></head>
+
+
+    [[= layout.section1 ]]
+    <!--Double navigation-->
+    <header>
+        <!-- Sidebar navigation -->
+        <div id="slide-out" class="side-nav sn-bg-4 fixed" style="transform: translateX(0%);">
+            <ul class="custom-scrollbar">
+                <!-- Logo -->
+                
+                <!--/. Logo -->
+                <!--Social-->
+                <li>
+                    
+                </li>
+                <!--/Social-->
+                <!--Search Form-->
+                <li>
+                    <form class="search-form" role="search">
+                        <div class="form-group md-form mt-0 pt-1 waves-light waves-effect waves-light">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </li>
+                <!--/.Search Form-->
+                <!-- Side navigation links -->
+                <li>
+                    <ul class="collapsible collapsible-accordion">
+                        
+						
+						[[? model.userDetails.role=="superadmin"]]
+						<li class=""><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-user"></i>Admin<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul class="list-unstyled">
+                                    <li><a href="admins" class="waves-effect">All Admins</a>
+                                    </li>
+                                    <li><a href="manageadmin" class="waves-effect">Edit/delete Admin</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+						 [[?]]
+                            
+                       
+						[[? model.userDetails.role=="admin"]]
+						<li class=""><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-plus-square"></i></i>Doctors<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul class="list-unstyled">
+                                    <li><a href="doctors" class="waves-effect">All Doctors</a>
+                                    </li>
+                                    <li><a href="managedoctor" class="waves-effect">Edit/delete Doctors</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+						 [[?]]
+						
+						[[? model.userDetails.role=="admin"]]
+						<li class=""><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-pen-fancy"></i></i>Operators<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul class="list-unstyled">
+                                    <li><a href="operators" class="waves-effect">All Operators</a>
+                                    </li>
+                                    <li><a href="manageoperator" class="waves-effect">Edit/delete Operators</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+						 [[?]]
+						 
+                         [[?model.userDetails.role=="operator"]]
+                        
+						<li class=""><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-ambulance"></i>Patients<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul class="list-unstyled">
+                                    <li><a href="patients" class="waves-effect">All Patients</a>
+                                    </li>
+                                    <li><a href="managepatient" class="waves-effect">Edit/delete Patient</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+						 
+                        [[?]]
+
+                        [[? model.userDetails.role=="operator"]]
+                            <li class=""><a class="collapsible-header waves-effect arrow-r"><i class="fas fa-calendar-check"></i>Appointments<i class="fas fa-angle-down rotate-icon"></i></a>
+                            <div class="collapsible-body" style="display: none;">
+                                <ul class="list-unstyled">
+                                    <li><a href="appointments" class="waves-effect">All Appointments</a>
+                                    </li>
+                                    <li><a href="manageappointment" class="waves-effect">Edit/delete Appointment</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        [[?]]
+                        [[? model.userDetails.role=="doctor" ]]
+                            <li class="active" >
+                                <a class="collapsible-header waves-effect arrow-r " href="appointments"><i class="fas fa-calendar-check" style="margin-right:15px"></i>My Appointments</i></a>
+                            </li>
+                        [[?]]
+						[[? model.userDetails.role=="doctor" ]]
+                            <li class="active" >
+                                <a class="collapsible-header waves-effect arrow-r " href="updatehealth"><i class="fas fa-thermometer" style="margin-right:15px"></i>Health Condition</i></a>
+                            </li>
+                        [[?]]
+						[[? model.userDetails.role=="patient" ]]
+                            <li class="active" >
+                                <a class="collapsible-header waves-effect arrow-r " href="appointments"><i class="fas fa-calendar-check" style="margin-right:15px"></i>My Appointments</i></a>
+                            </li>
+                        [[?]]
+						[[? model.userDetails.role=="patient" ]]
+                            <li class="active" >
+                                <a class="collapsible-header waves-effect arrow-r " href="updatehealth"><i class="fas fa-thermometer" style="margin-right:15px"></i>My Health Condition</i></a>
+                            </li>
+                        [[?]]
+                        
+
+                        
+                    </ul>
+                </li>
+                <!--/. Side navigation links -->
+            </ul>
+            <div class="sidenav-bg mask-strong"></div>
+        </div>
+        <!--/. Sidebar navigation -->
+        <!-- Navbar -->
+        <nav class="navbar fixed-top navbar-toggleable-md navbar-expand-lg scrolling-navbar double-nav">
+            <!-- SideNav slide-out button -->
+            <div class="float-left">
+                <a href="https://mdbootstrap.com/previews/docs/latest/html/skins/light-blue-skin.html#" data-activates="slide-out" class="button-collapse"><i class="fas fa-bars"></i></a>
+            </div>
+            <!-- Breadcrumb-->
+            <div class="breadcrumb-dn mr-auto">
+			
+                <p>Hospital Management Project</p>
+            </div>
+            
+         
+         <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                
+					<li class="nav-item dropdown">
+              <a class="nav-link  waves-effect waves-light" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <i class="fas fa-user"></i>  [[=(model.userDetails.id)]] <i class="fas fa-caret-down"></i>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item waves-effect waves-light">[[=(model.userDetails.role)]]</a>
+                  <a class="dropdown-item waves-effect waves-light" ng-click="logout()">Log Out</a>
+              </div>
+          </li>
+				</ul>
+                    
+        </nav>
+        <!-- /.Navbar -->
+    </header>
+    <!--/.Double navigation-->
+  
+    <!--Main layout-->
+      <!--Main layout-->
+	  
+ [[= layout.section2 ]] 
+
+
+    <!--/.Footer-->
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="./js/html2canvas.min.js"></script>
+    <!-- Tooltips -->
+    <script type="text/javascript" src="./js/popper.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="./js/mdb.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+	<script type="text/javascript" src="./js/table.js"></script>
+	<script type="text/javascript" src="./js/script1.js"></script>
+	<div class="hiddendiv common"></div>
+    <script>
+
+        // SideNav Initialization
+        $(".button-collapse").sideNav();
+        
+        new WOW().init();
+		var model = [[= JSON.stringify(model.userDetails) ]]; //to get userDetails from request session
+		userDetails = model;
+
+        $('.datepicker').pickadate({
+        weekdaysShort: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
+        showMonthsShort: true
+        })
+
+        $('#appointmenttime').pickatime({});
+		
+		
+
+    
+    </script><div class="drag-target" style="left: 0px; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+
+
+</body></html>

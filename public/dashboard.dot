@@ -1,0 +1,12 @@
+---
+layout: index.dot
+title: dashboard
+---
+[[##section1:
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true">
+#]]
+ 
+[[##section2:
+  
+#]]
+ 

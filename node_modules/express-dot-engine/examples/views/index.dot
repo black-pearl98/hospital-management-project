@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Examples</title>
+  </head>
+  <body>
+    <h1>Example</h1>
+
+    Server says: [[= model.fromServer ]]
+
+    <ul>
+      <li><a href="/layout">Layout example</a></li>
+      <li><a href="/cascade">Cascading layout example</a></li>
+      <li><a href="/partial">Partial example</a></li>
+      <li><a href="/helper">Custom helper example</a></li>
+    </ul>
+
+  </body>
+</html>

@@ -1,0 +1,158 @@
+---
+layout: index.dot
+title: users
+---
+ 
+ [[##section1:
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true" data-ng-init="userspage()" id="mainbody">
+#]]
+
+[[##section2:
+	  <div class="soopstable" id="table1" style="overflow-x:auto;">
+	<div class="head"><div class="caption" style="flex: 0 0 auto;">Users</div>
+	<div style="flex: 1 1 100%;"></div>
+	<div class="tools">
+	<svg viewBox="0 0 24 24" width="18px" height="18px">
+		<path d="M 9 2 C 5.1458514 2 2 5.1458514 2 9 C 2 12.854149 5.1458514 16 9 16 C 10.747998 16 12.345009 15.348024 13.574219 14.28125 L 14 14.707031 L 14 16 L 20 22 L 22 20 L 16 14 L 14.707031 14 L 14.28125 13.574219 C 15.348024 12.345009 16 10.747998 16 9 C 16 5.1458514 12.854149 2 9 2 z M 9 4 C 11.773268 4 14 6.2267316 14 9 C 14 11.773268 11.773268 14 9 14 C 6.2267316 14 4 11.773268 4 9 C 4 6.2267316 6.2267316 4 9 4 z"/>
+	</svg><input onchange="searchTable('table1',this)" class="search" placeholder="Search" type="text" aria-label="search" value="">
+	</div>
+	</div>
+	<table cellspacing="0">
+	<thead>
+	<tr><th>#</th><th>userName</th><th>Roll</th><th>userId</th><th>password</th><th>email</th></tr>
+	</thead>
+	<tbody>
+	
+	</tbody>
+	</table>
+	<div class="foot"><div class="tableaction" style="flex: 1 1 100%;">
+	<svg ng-click="addnewuser()" viewBox="0 0 24 24" width="18px" height="18px">
+		<path style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal" d="M 12 2 C 6.4889971 2 2 6.4889971 2 12 C 2 17.511003 6.4889971 22 12 22 C 17.511003 22 22 17.511003 22 12 C 22 6.4889971 17.511003 2 12 2 z M 12 4 C 16.430123 4 20 7.5698774 20 12 C 20 16.430123 16.430123 20 12 20 C 7.5698774 20 4 16.430123 4 12 C 4 7.5698774 7.5698774 4 12 4 z M 11 7 L 11 11 L 7 11 L 7 13 L 11 13 L 11 17 L 13 17 L 13 13 L 17 13 L 17 11 L 13 11 L 13 7 L 11 7 z" font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"/>
+	</svg>
+	<svg ng-click="edituser()" viewBox="0 0 24 24" width="18px" height="18px">
+		<path d="M 18.414062 2 C 18.158062 2 17.902031 2.0979687 17.707031 2.2929688 L 15.707031 4.2929688 L 14.292969 5.7070312 L 3 17 L 3 21 L 7 21 L 21.707031 6.2929688 C 22.098031 5.9019687 22.098031 5.2689063 21.707031 4.8789062 L 19.121094 2.2929688 C 18.926094 2.0979687 18.670063 2 18.414062 2 z M 18.414062 4.4140625 L 19.585938 5.5859375 L 18.292969 6.8789062 L 17.121094 5.7070312 L 18.414062 4.4140625 z M 15.707031 7.1210938 L 16.878906 8.2929688 L 6.171875 19 L 5 19 L 5 17.828125 L 15.707031 7.1210938 z"/>
+	</svg>
+	<svg ng-click="deleteuserconfirmation()" viewBox="0 0 24 24" width="18px" height="18px">
+		<path style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal" d="M 4.7070312 3.2929688 L 3.2929688 4.7070312 L 10.585938 12 L 3.2929688 19.292969 L 4.7070312 20.707031 L 12 13.414062 L 19.292969 20.707031 L 20.707031 19.292969 L 13.414062 12 L 20.707031 4.7070312 L 19.292969 3.2929688 L 12 10.585938 L 4.7070312 3.2929688 z" font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"/>
+	</svg>
+	</div><div class="paging">Paging</div><div class="page"> 1-10 of 100 </div><div class="pageaction"><svg onclick="pageactionTable('table1','prev')" class="j2dfb39" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z"></path></svg> <svg onclick="pageactionTable('table1','next')" class="" focusable="false" viewBox="0 0 24 24" aria-hidden="true" role="presentation"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg> </div></div>
+	</div>
+
+			<div class="modal fade" id="userdialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+					<div class="modal-header text-center">
+						<h4 id="modaltitle" class="modal-title w-100 font-weight-bold">Add User</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="md-form mx-3">
+								<i class="fas fa-user prefix active"></i>
+								<input type="text" id="orangeForm-name" class="form-control" ng-model="userDetails.username">
+								<label  for="orangeForm-name">User Name</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-user prefix active"></i>
+								<input type="text" id="orangeForm-id" class="form-control" ng-model="userDetails.userid">
+								<label  for="orangeForm-id">User ID</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-lock prefix active"></i>
+								<input type="password" id="orangeForm-pwd" class="form-control" ng-model="userDetails.password">
+								<label  for="orangeForm-pwd">Password</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-lock prefix active"></i>
+								<input type="text" id="orangeForm-add1" class="form-control" ng-model="userDetails.addr_1">
+								<label  for="orangeForm-add1">Address 1</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-lock prefix active"></i>
+								<input type="text" id="orangeForm-add2" class="form-control" ng-model="userDetails.addr_2">
+								<label  for="orangeForm-add2">Address 2</label>
+							</div>
+						</div>
+			
+
+						<div class="col-md-6">
+							<div class="md-form mx-3">
+								<i class="fas fa-lock prefix active"></i>
+								<input type="text" id="orangeForm-add3" class="form-control" ng-model="userDetails.addr_3">
+								<label  for="orangeForm-add3">Zip Code</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-lock prefix active"></i>
+								<input type="text" id="orangeForm-phn" class="form-control" ng-model="userDetails.phone">
+								<label  for="orangeForm-phn">Phone</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-envelope prefix active"></i>
+								<input type="email" id="user-Email" class="form-control validate" ng-model="userDetails.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+								<label  for="user-Email" data-error="Invalid" data-success="">Email ID</label>
+							</div>
+							<select class="mdb-select  mx-4" ng-model="userDetails.role" >
+								<option  value=""  disabled selected>Select role</option>
+								[[?model.userDetails.role=="superadmin"]]
+									<option value="admin" >admin</option>
+								[[?]]
+								[[?model.userDetails.role=="admin"]]
+									<option value="operator" >operator</option>
+									<option value="doctor" >doctor</option>
+								[[?]]
+								[[?model.userDetails.role=="operator" || model.userDetails.role=="doctor"]]
+									<option value="patient" >patient</option>
+								[[?]]
+							</select>
+							[[?model.userDetails.role=="superadmin"]]
+								<select class="mdb-select  mx-4" ng-model="userDetails.type" >
+								
+								<option  value=""  disabled selected>Select Type</option>
+								
+								<option value="hospital" >hospital</option>
+							[[?]]
+								
+							</select>
+							[[?model.userDetails.role=="superadmin"]]
+								<select class="mdb-select  mx-4" ng-model="userDetails.hospitalBranchId" ng-options="x.hospitalBranch for x in allHospitals">
+								</select>
+							[[?]]
+						</div>
+					</div>
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-deep-orange" id="addbutton" ng-click="addorupdateuser()">Add</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="deletedialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure, you want to delete selected user?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" ng-click="deleteuser()" class="btn btn-primary">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+	
+	
+	
+#]]
+ 

@@ -1,0 +1,127 @@
+---
+layout: index.dot
+title: manageappointment
+---
+ 
+ [[##section1:
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true" data-ng-init="showAllAppointments()" id="mainbody">
+#]]
+
+[[##section2:
+	  <div class="mainContainer" id="exportthis">
+	  
+		<div class="card">
+		  <div class="card-body">
+		  <span class="badge badge-info">EDIT APPOINTMENT</span><br>
+			Select the doctor id whose appointment you want to edit
+			<select class="browser-default custom-select client-select" ng-model="doctorDetails" ng-options="x.doctorId for x in allAppointments" ng-change="getrequiredPatientDetails()">
+		</select>
+		Select the patient id of selected doctor for edit 
+		<select class="browser-default custom-select client-select" ng-model="patientDetails" ng-options="x.patientId for x in allrequiredPatients" ng-change="editnewuser()">
+		</select>
+		  </div>
+		</div>
+		
+		
+		
+  
+		
+		<div class="card">
+		  <div class="card-body">
+		  <span class="badge badge-info">DELETE APPOINTMENT</span><br>
+			Select the doctor id whose appointment you want to delete
+			<select class="browser-default custom-select client-select" ng-model="doctorDetails" ng-options="x.doctorId for x in allAppointments" ng-change="getrequiredPatientDetails()">
+		</select>
+		Select the patient id of selected doctor for delete 
+		<select class="browser-default custom-select client-select" ng-model="DpatientDetails" ng-options="x.patientId for x in allrequiredPatients" ng-change="deleteuserconfirmation()">
+		</select>
+		  </div>
+		</div>
+		
+		
+		
+		
+  
+  
+		<div class="modal fade" id="userdialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog " role="document">
+					<div class="modal-content">
+					<div class="modal-header text-center">
+						<h4 id="modaltitle" class="modal-title w-100 font-weight-bold">Edit Appointment</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					
+							
+							<div class="md-form mx-3">
+								<i class="fas fa-plus-square  prefix active"></i>
+								<input type="text" id="orangeForm-adminid" class="form-control datepicker" ng-model="patientDetails.doctorId" disabled>
+								<label  for="orangeForm-adminid">Doctor ID</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-ambulance prefix active"></i>
+								<input type="text" id="orangeForm-adminid" class="form-control datepicker" ng-model="patientDetails.patientId" disabled>
+								<label  for="orangeForm-adminid">Patient ID</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="far fa-calendar prefix active"></i>
+								<input type="text" id="orangeForm-adminid" class="form-control datepicker" ng-model="patientDetails.appointmentDate" ng-change="showtimeforupdate()">
+								<label  for="orangeForm-adminid">Appointment date</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="far fa-clock prefix active"></i>
+                                <select class="mdb-select  mx-4" ng-model="patientDetails.appointmentTime"  ng-change="showtimeforupdate()">
+                                    <option  value=""  disabled selected>Select Time</option>
+                                    <option value="9 am to 10 am" ng-disabled=allTimes['nine'].displayTime>9 am to 10am</option>
+                                    <option value="10 am to 11 am" ng-disabled=allTimes['ten'].displayTime>10 am to 11am</option>
+                                    <option value="11 am to 12 pm" ng-disabled=allTimes['eleven'].displayTime>11 am to 12pm</option>
+                                    <option value="12 pm to 1 pm" ng-disabled=allTimes['twelve'].displayTime>12 pm to 1pm</option>
+                                    <option value="1 pm to 2 pm" ng-disabled=allTimes['thirteen'].displayTime>1 pm to 2pm</option>
+                                    <option value="3 pm to 4 pm" ng-disabled=allTimes['fifteen'].displayTime>3 pm to 4pm</option>
+                                    <option value="4 pm to 5 pm" ng-disabled=allTimes['sixteen'].displayTime>4 pm to 5pm</option>
+                                    <option value="5 pm to 6 pm" ng-disabled=allTimes['seventeen'].displayTime>5 pm to 6pm</option>
+                                    <option value="6 pm to 7 pm" ng-disabled=allTimes['eighteen'].displayTime>6 pm to 7pm</option>
+								</select>
+							</div>
+						
+            <div class="modal-footer d-flex justify-content-center">
+                <button class="btn btn-deep-orange" id="addbutton" ng-click="updateappointment()">Add</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End Modal for add/edit doctor-->
+
+		<!-- Modal for delete confirmation -->
+
+		<div class="modal fade" id="deletedialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		  aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				Are you sure, you want to delete selected user?
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				<button type="button" ng-click="deleteAppointment()" class="btn btn-primary">Yes</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<!--End Modal for delete confirmation -->
+	
+    
+		</div>
+	
+#]]
+ 

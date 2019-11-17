@@ -1,0 +1,140 @@
+---
+layout: index.dot
+title: managedoctor
+---
+ 
+ [[##section1:
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true" data-ng-init="showAllDoctors()" id="mainbody">
+#]]
+
+[[##section2:
+	  <div class="mainContainer" id="exportthis">
+	  
+		<div class="card">
+		  <div class="card-body">
+		  <span class="badge badge-info">EDIT DOCTOR</span><br>
+			Select the doctor id which you want to edit
+			<select class="browser-default custom-select client-select" ng-model="userDetails" ng-options="x.id for x in allDoctors" ng-change="editnewuser()">
+		</select>
+		  </div>
+		</div>
+		
+  
+		<div class="card">
+		  <div class="card-body">
+		  <span class="badge badge-info">DELETE DOCTOR</span><br>
+			Select the doctor id which you want to delete
+			<select class="browser-default custom-select client-select" ng-model="DuserDetails" ng-options="x.id for x in allDoctors" ng-change="deleteuserconfirmation()">
+		</select>
+		  </div>
+		</div>
+		
+  
+  
+		<div class="modal fade" id="userdialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+					<div class="modal-header text-center">
+						<h4 id="modaltitle" class="modal-title w-100 font-weight-bold">Edit User</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="md-form mx-3">
+								<i class="fas fa-user prefix active"></i>
+								<input type="text" id="orangeForm-name" class="form-control" ng-model="userDetails.name">
+								<label  for="orangeForm-name">User Name</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-user prefix active"></i>
+								<input type="text" id="orangeForm-id" class="form-control" ng-model="userDetails.id" disabled>
+								<label  for="orangeForm-id" >User ID</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-lock prefix active"></i>
+								<input type="password" id="orangeForm-pwd" class="form-control" ng-model="userDetails.password" disabled>
+								<label  for="orangeForm-pwd" >Password</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-address-card prefix active"></i>
+								<input type="text" id="orangeForm-add1" class="form-control" ng-model="userDetails.addr1">
+								<label  for="orangeForm-add1">Address 1</label>
+							</div>
+							
+						</div>
+			
+
+						<div class="col-md-6">
+							
+							<div class="md-form mx-3">
+								<i class="fas fa-address-card prefix active"></i>
+								<input type="text" id="orangeForm-add2" class="form-control" ng-model="userDetails.addr2">
+								<label  for="orangeForm-add2">Address 2</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-phone prefix active"></i>
+								<input type="text" id="orangeForm-phn" class="form-control" ng-model="userDetails.phone">
+								<label  for="orangeForm-phn">Phone</label>
+							</div>
+							<div class="md-form mx-3">
+								<i class="fas fa-envelope prefix active"></i>
+								<input type="email" id="user-Email" class="form-control validate" ng-model="userDetails.email" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+								<label  for="user-Email" data-error="Invalid" data-success="">Email ID</label>
+							</div>
+							<select class="mdb-select  mx-4" ng-model="userDetails.role" >
+								<option  value=""  disabled selected>Select role</option>
+								[[?model.userDetails.role=="superadmin"]]
+									<option value="admin" >admin</option>
+								[[?]]
+								[[?model.userDetails.role=="admin"]]
+									<option value="doctor" >doctor</option>
+									<option value="operator" >operator</option>
+								[[?]]
+								[[?model.userDetails.role=="operator" || model.userDetails.role=="doctor"]]
+									<option value="patient" >patient</option>
+								[[?]]
+							</select>
+						</div>
+					</div>
+					<div class="modal-footer d-flex justify-content-center">
+						<button class="btn btn-deep-orange" id="addbutton" ng-click="updatedoctor()">Update</button>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--End Modal for add/edit doctor-->
+
+		<!-- Modal for delete confirmation -->
+
+		<div class="modal fade" id="deletedialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		  aria-hidden="true">
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				Are you sure, you want to delete selected user?
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+				<button type="button" ng-click="deletedoctor()" class="btn btn-primary">Yes</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+		<!--End Modal for delete confirmation -->
+	
+    
+		</div>
+	
+#]]
+ 

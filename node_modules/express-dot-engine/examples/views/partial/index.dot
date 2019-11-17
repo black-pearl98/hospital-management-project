@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>[[= layout.title ]]</title>
+  </head>
+  <body>
+    <div>
+      Message from partial: [[= partial('partials/hello.dot') ]]
+    </div>
+  </body>
+</html>

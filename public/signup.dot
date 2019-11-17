@@ -1,0 +1,97 @@
+---
+layout: home.dot
+title: Signup
+---
+ 
+[[##section:
+<!-- Card -->
+<main style="margin-top:20px">
+    <div class="container-fluid">
+        
+<!-- Material form login -->
+
+<div class="card" style="max-width: 35vw;margin: 0 auto;">
+
+  <h5 class="card-header info-color white-text text-center py-4">
+    <strong>Signup</strong>
+  </h5>
+
+  <!--Card content-->
+  <div class="card-body px-lg-5 pt-0">
+      <!-- name -->
+      <div class="md-form">
+        <input type="text" id="username" class="form-control" name="uname" required="" ng-model="userDetails.userName">
+        <label for="uname">Username</label>
+      </div>
+	  
+	   <!-- userid -->
+      <div class="md-form">
+        <input type="text" id="userid" class="form-control" name="uid" required=""  ng-model="userDetails.userId">
+        <label for="uid">User id</label>
+      </div>
+
+      <!-- Password -->
+      <div class="md-form">
+        <input type="password" id="password" class="form-control" name="password" required=""  ng-model="userDetails.password">
+        <label for="password">Password</label>
+      </div>
+	  
+	   <!--confirm Password -->
+      <div class="md-form">
+        <input type="password" id="cpassword" class="form-control" name="cpassword" required=""  ng-model="userDetails.confirmPassword">
+        <label for="cpassword">confirm Password</label>
+      </div>
+	  
+	   <!-- id -->
+      <div class="md-form">
+        <input type="text" id="useradd1" class="form-control" name="useradd1" required=""  ng-model="userDetails.addr_1">
+        <label for="useradd1">address1</label>
+      </div>
+
+      <!-- add -->
+      <div class="md-form">
+        <input type="text" id="useradd2" class="form-control" name="useradd" required=""  ng-model="userDetails.addr_2">
+        <label for="useradd">address2</label>
+      </div>
+	  
+	    <!-- pin -->
+      <div class="md-form">
+        <input type="number" id="useradd3" class="form-control" name="userpin" required=""  ng-model="userDetails.addr_3">
+        <label for="userpin">Zip code</label>
+      </div>
+	  
+	  <!--phone -->
+      <div class="md-form">
+        <input type="text" id="phn" class="form-control" name="phn" required=""  ng-model="userDetails.phone">
+        <label for="phn">phone</label>
+      </div>
+	  
+	   <!--email-->
+      <div class="md-form">
+        <input type="email" id="email" class="form-control is-invalid" name="cemail" required=""  ng-model="userDetails.email">
+        <label for="cemail">email</label>
+      </div>
+	  
+	  
+
+
+      <!-- Register -->
+      <p>Already have an account?
+        <a href="login">LogIn</a>
+      </p>
+
+
+      <!-- Sign in button -->
+      <button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" ng-click="signup()">Sign Up</button>
+	  
+
+    <!-- Form -->
+  </div>
+
+</div>
+<!-- Material form login -->
+
+    </div>
+  </main>
+  
+#]]

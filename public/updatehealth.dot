@@ -1,0 +1,584 @@
+---
+layout: index.dot
+title: updatehealth
+---
+
+[[##section1:
+[[? model.userDetails.role=="doctor"]]
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true" data-ng-init="showAllPatients()" id="mainbody" style="margin-left: 12%;">
+[[?]]
+[[? model.userDetails.role=="patient"]]
+  <body ng-app="myApp" ng-controller="myCtrl" class="fixed-sn light-blue-skin" aria-busy="true" data-ng-init="healthpage()" id="mainbody" style="margin-left: 12%;">
+[[?]]
+#]]
+[[##section2:
+	[[? model.userDetails.role=="doctor"]]
+		<div class="card">
+			  <div class="card-body">
+			  <span class="badge badge-info">SELECT PATIENT ID</span><br>
+				Select the patient id whose health condition you want to update
+				<select class="browser-default custom-select client-select" ng-model="userDetails" ng-options="x.id for x in allPatients" ng-change="findcorrectpatient()">
+			</select>
+			  </div>
+		</div>
+	[[?]]	
+
+	<div class="card ">
+		<div class="card-body soopsContainer" id="panel_927062">
+				<div class="row soopsControl" id="panel_927062">
+					<div class="col-md-6 soopsContainer" id="panel_927062-col0">
+						<h4 id="txt7" class="soopsControl" style="margin-top:20px; margin-left:20px; margin-bottom: 18px!important;color:#1a8cff">Contact Details:</h4></div><div class="col-md-3 soopsContainer" id="panel_927062-col1">
+						<div class="md-form form-sm soopsControl" id="txt1">
+							<i class="prefix"></i>
+							<input type="text" id="patientid" class="form-control " ng-model="patientDetails.id">
+							<label for="patientid">patient Id:</label>
+						</div>
+					</div>
+					<div class="col-md-3 soopsContainer" id="panel_927062-col2">
+					<div class="md-form form-sm soopsControl" id="txt2">
+								<i class="prefix"></i>
+								<input type="text" id="dateVal" class="form-control " ng-model="patientDetails.todaysDate">
+								<label for="dateVal" class="">Date:</label>
+					</div>
+					</div>
+				</div>
+				<div class="row soopsControl" id="txt8">
+					<div class="col-md-4 soopsContainer" id="txt8-col0">
+						<div class="md-form form-sm soopsControl" id="txt9">
+								<i class="prefix"></i>
+								<input type="text" id="patient-first-name" class="form-control " ng-model="patientDetails['details'].patientFirstName">
+								
+								<label for="patient-first-name" class="">Firstname:</label>
+						</div>
+					</div>
+					<div class="col-md-4 soopsContainer" id="txt8-col1">
+							<div class="md-form form-sm soopsControl" id="txt10">
+								<i class="prefix"></i>
+								<input type="text" id="patient-middle-name" class="form-control" ng-model="patientDetails['details'].patientMiddleName">
+								<label for="patient-middle-name" class="">Middlename:</label>
+							</div>
+					</div>
+					<div class="col-md-4 soopsContainer" id="txt8-col2">
+						<div class="md-form form-sm soopsControl" id="txt11">
+							<i class="prefix"></i>
+							<input type="text" id="patient-last-name" class="form-control"  ng-model="patientDetails['details'].patientLastName">
+							<label for="patient-last-name" class="">Lastname:</label>
+						</div>
+					</div>
+				</div>
+				<div class="row soopsControl" id="txt12">
+					<div class="col-md-4 soopsContainer" id="txt12-col0">
+						<div class="md-form form-sm soopsControl" id="txt13">
+								<i class="prefix"></i>
+								<input type="text" id="patient-dob" class="form-control" ng-model="patientDetails['details'].patientDOB">
+								<label for="patient-dob" class="">Date Of Birth:</label>
+						</div>
+					</div>
+					<div class="col-md-4 soopsContainer" id="txt12-col1">
+							<div class="md-form form-sm soopsControl" id="txt14">
+								<i class="prefix"></i>
+								<input type="text" id="patient-age" class="form-control" ng-model="patientDetails['details'].patientAge">
+								<label for="patient-age" class="">Age</label>
+							</div>
+					</div>
+					<div class="col-md-4 soopsContainer" id="txt12-col2">
+						<div class="md-form form-sm soopsControl" id="txt15">
+							<i class="prefix"></i>
+							<input type="text" id="phoneno" class="form-control"  ng-model="patientDetails['details'].patientPhoneNo">
+							<label for="phoneno" class="">Phone No:</label>
+						</div>
+					</div>
+				</div>
+				<div class="md-form form-sm soopsControl" id="txt16">
+						<i class="prefix"></i>
+						<input type="text" id="patient-address" class="form-control "  ng-model="patientDetails['details'].patientAddress">
+						<label for="patient-address" class="">Address:</label>
+				</div>
+				<div class="row soopsControl" id="txt21">
+						<div class="col-md-6 soopsContainer" id="txt21-col0">
+								<div class="md-form form-sm soopsControl" id="txt22">
+									<i class="prefix"></i>
+									<input type="text" id="patient-locality" class="form-control " ng-model="patientDetails['details'].patientLocality">
+									
+									<label for="patient-locality">Locality:</label>
+								</div>
+						</div>
+						<div class="col-md-6 soopsContainer" id="txt21-col1">
+							<div class="md-form form-sm soopsControl" id="txt23">
+									<i class="prefix"></i>
+									<input type="text" id="patient-landmark" class="form-control "  ng-model="patientDetails['details'].patientLandmark">
+									<label for="patient-landmark" class="">Landmark:</label>
+							</div>
+						</div>
+				</div>
+				<div class="row soopsControl" id="txt24">
+						<div class="col-md-4 soopsContainer" id="txt24-col0">
+							<div class="md-form form-sm soopsControl" id="txt15">
+							<i class="prefix"></i>
+							<input type="text" id="patient-city" class="form-control " ng-model="patientDetails['details'].patientCity">
+							<label for="patient-city" class="">City</label>
+							</div>
+						</div>
+						<div class="col-md-4 soopsContainer" id="txt24-col1">
+							<div class="md-form form-sm soopsControl" id="txt26">
+							<i class="prefix"></i>
+							<input type="text" max-length="6" id="patient-pincode" class="form-control " ng-model="patientDetails['details'].patientPincode">
+							
+							<label for="patient-pincode" class="">Pincode:</label>
+							</div>
+						</div>
+						<div class="col-md-4 soopsContainer" id="txt24-col2">
+							<div class="md-form form-sm soopsControl" id="txt27">
+									<i class="prefix"></i>
+									<input type="email" id="patient-email" class="form-control validate" ng-model="patientDetails['details'].patientEmail">
+									
+									<label for="patient-email" class="" data-error="invalid">Email:</label>
+							</div>
+						</div>
+				</div>
+				<div class="md-form form-sm soopsControl" id="txt29">
+					<i class="prefix"></i>
+					<input type="text" id="patient-Emergency-contact" class="form-control " ng-model="patientDetails['details'].emergencyContact">
+					
+					<label for="patient-Emergency-contact">Emergency Phone no:</label>
+				</div>
+				<!--<div class="row soopsControl" id="txt33"><div class="col-md-10 soopsContainer" id="txt33-col0">
+						</div><div class="col-md-2 soopsContainer" id="txt33-col1">
+						<button id="btn" ng-click="btn" class="waves-effect waves-light btn btn-primary btn-md  soopsControl"> Next</button></div>
+				</div>-->
+		</div>
+	</div> 
+	<div class="card " style="margin-top: 20px;">
+		<div class="card-body soopsContainer" id="panel_267611">
+				<div class="row soopsControl" id="panel_267611">
+					<div class="col-md-8 soopsContainer" id="panel_267611-col0">
+						<div class="md-form form-sm soopsControl" id="head">
+									<i class="prefix"></i>
+						</div>
+								<h4 id="label" class="soopsControl" style="margin-top:20px; margin-left:20px; margin-bottom: 18px!important;color:#1a8cff">Health Conditions:</h4>
+					</div>
+				</div>
+				<h6 id="label2" class="soopsControl" style="margin-left: 20px;font-weight: bold;">Briefly describe your main reasons for seeking out yoga therapy and any goals you wish to accomplish through yoga therapy.</h6>
+				<div class="md-form form-sm soopsControl" id="text3">
+						<i class="prefix"></i>
+						<input type="text" id="yoga-therapy" class="form-control " ng-model="patientDetails['details'].question1">
+						<label for="yoga-therapy" class="">Your Answer</label>
+				</div>
+				<h6 id="newlabel" class="soopsControl" style="margin-left:20px;margin-right:20px;font-weight: bold;">Outline your yoga practice experience:(E.g. type of yoga, how long for,how recent?)</h6>
+					<div class="md-form form-sm soopsControl" id="text8">
+							<i class="prefix"></i>
+							<input type="text" id="yoga-practice" class="form-control " ng-model="patientDetails['details'].question2">
+							<label for="yoga-practice" class="">Your Answer</label>
+					</div>
+				<h6 id="label3" class="soopsControl" style="margin-left:20px;margin-right:20px;font-weight: bold;">Have you been diagnosed or treated by a health professional for:(tick for relevent)</h6>
+						<div class="form-check form-check-inline soopsControl" id="check_0" style=" margin-left: 20px;">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_0" ng-model="patientDetails['details'].question3.Asthma">
+										<label class="form-check-label" for="materialIndeterminate_0">Asthma</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_1">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_1" ng-model="patientDetails['details'].question3.Diabetes">
+										<label class="form-check-label" for="materialIndeterminate_1">Diabetes</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_2">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_2" ng-model="patientDetails['details'].question3.Epilepsy">
+										<label class="form-check-label" for="materialIndeterminate_2" style="margin-left: 20px;">Epilepsy</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_3">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_3" ng-model="patientDetails['details'].question3.Cancer">
+										<label class="form-check-label" for="materialIndeterminate_3" style="margin-left: 20px;">Cancer</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_4">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_4" ng-model="patientDetails['details'].question3.Arthritis">
+										<label class="form-check-label" for="materialIndeterminate_4" style="margin-left: 20px;">Arthritis</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_5">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_5" ng-model="patientDetails['details'].question3.Heartcondition">
+										<label class="form-check-label" for="materialIndeterminate_5" style="margin-left: 20px;">Heart condition</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_6">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_6" ng-model="patientDetails['details'].question3.Depression">
+										<label class="form-check-label" for="materialIndeterminate_6" style="margin-left: 20px;">Depression</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_7">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_7" ng-model="patientDetails['details'].question3.MedicalHealthDisorders">
+										<label class="form-check-label" for="materialIndeterminate_7" style="margin-left: 20px;">Medical Health Disorders</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_8">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_8" ng-model="patientDetails['details'].question3.Bonefracture">
+										<label class="form-check-label" for="materialIndeterminate_8" style="margin-left: 20px">Bone fracture</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_9">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_9"ng-model="patientDetails['details'].question3.SwollenJoints">
+										<label class="form-check-label" for="materialIndeterminate_9" style="margin-left: 20px;">Swollen Joints</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_10">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_10" ng-model="patientDetails['details'].question3.NerveDamage">
+										<label class="form-check-label" for="materialIndeterminate_10" style="margin-left: 20px;">Nerve Damage</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_11">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_11" ng-model="patientDetails['details'].question3.Recentsurgery">
+										<label class="form-check-label" for="materialIndeterminate_11" style="margin-left: 20px;">Recent surgery</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_12">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_12" ng-model="patientDetails['details'].question3.Stroke">
+										<label class="form-check-label" for="materialIndeterminate_12" style="margin-left: 20px;">Stroke</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_13">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_13" ng-model="patientDetails['details'].question3.EyeInjury">
+										<label class="form-check-label" for="materialIndeterminate_13" style="margin-left: 20px;">Eye Injury/Surgery</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_14">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_14" ng-model="patientDetails['details'].question3.Scoliosis">
+										<label class="form-check-label" for="materialIndeterminate_14" style="margin-left: 20px;">Scoliosis</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_15">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_15" ng-model="patientDetails['details'].question3.Fibomyalgia">
+										<label class="form-check-label" for="materialIndeterminate_15" style="margin-left: 20px;">Fibomyalgia/CFS</label>
+						</div>
+						<div class="form-check form-check-inline soopsControl" id="check_16">
+										<input type="checkbox" class="form-check-input" id="materialIndeterminate_16" ng-model="patientDetails['details'].question3.HormonalIssues">
+										<label class="form-check-label" for="materialIndeterminate_16" style="margin-left: 20px;">Hormonal Issues</label>
+						</div>
+				<div class="form-check form-check-inline soopsControl" id="check_17">
+								<input type="checkbox" class="form-check-input" id="materialIndeterminate_17" style="margin-left: 20px;" ng-model="patientDetails['details'].question3.pregnant">
+								<label class="form-check-label" for="materialIndeterminate_17" style="margin-left: 20px;">
+								Are you pregnant or have been recently?</label>
+				</div>
+				<div class="form-check form-check-inline soopsControl" id="check_18" style="/* margin-left: 20px; */">
+								<input type="checkbox" class="form-check-input" id="materialIndeterminate_18" style="margin-left: 20px;" ng-model="patientDetails['details'].question3.Other">
+								<label class="form-check-label" for="materialIndeterminate_18" style="margin-left: 20px;">Any Other</label>
+				</div>
+				<h6 id="label6" class="soopsControl" style="margin-left:20px;font-weight: bold;margin-top: 20px;">Describe details and any treatments :</h6>
+					<div class="md-form form-sm soopsControl" id="text9">
+						<i class="prefix"></i>
+						<input type="text" id="treatments" class="form-control " ng-model="patientDetails['details'].question4">
+						
+						<label for="treatments" class="">Your Answer</label>
+					</div>
+				<h6 id="label6" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;">Have you had or do you currently have pain or injuries? (Please note where in the body and details)</h6>
+					<div class="md-form form-sm soopsControl" id="text9">
+							<i class="prefix"></i>
+							<input type="text" id="injuries" class="form-control " ng-model="patientDetails['details'].question5">
+							
+							<label for="injuries" class="">Your Answer</label>
+					</div>
+				<h6 id="label10" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;">On a scale of 0(no pain) to 10(being unbearable), how would you rate your pain level now?</h6>
+					<div class="md-form form-sm soopsControl" id="text13" ng-model="patientDetails['details'].question6">
+						<i class="prefix"></i>
+						<input type="text" id="pain-level" class="form-control ">
+						
+						<label for="pain-level" class="">Your Answer</label>
+					</div>
+				
+				
+			</div>
+		</div>
+
+		
+    <div class="card " style="margin-top: 20px;">
+		<div class="card-body soopsContainer" id="panel_594784">
+			<div class="row soopsControl" id="panel_594784">
+				<div class="col-md-8 soopsContainer" id="panel_594784-col0">
+					<h4 id="text25" class="soopsControl" style="margin-top:20px;margin-left: 20px;margin-buttom: 18px!imprtant;margin-bottom: 18px !important;color: #1a8cff;" margin-left:20px;="" margin-bottom:="" 18px!important;color:#1a8cff="">SVOI-PATIENT HISTORY FORM :</h4>
+				</div>
+				
+			</div>
+			
+		<h5 id="label13" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;">Habit Forming Behaviours:</h5>
+		<h6 id="label14" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Do you Smoke?</h6>
+		<div class="form-check soopsControl"  style="margin-left: 20px;">
+					<input type="radio" value="yes" class="form-check-input" id="newcheck0"   ng-model="patientDetails['details'].question7">
+  					<label class="form-check-label" for="newcheck0">Yes</label>
+					 <div class="col-md-6 soopsContainer" id="txt21-col0">
+								<div class="md-form form-sm soopsControl" ng-show="patientDetails['details'].question7=='yes'"  id="txt22">
+									<i class="prefix"></i>
+									<input type="text" id="patient-locality" ng-model="patientDetails['details'].answer7" class="form-control ">
+									
+									<label for="patient-locality">How Much?</label>
+								</div>
+						</div>
+		</div>
+		<div class="form-check soopsControl" >
+							 <input type="radio" value="no" class="form-check-input" id="newcheckhtfhgf" ng-model="patientDetails['details'].question7">
+								<label class="form-check-label" for="newcheckhtfhgf">No</label>	
+		</div>
+		<h6 id="label15" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Do you Drink?</h6>
+		<div class="form-check form-check-inline soopsControl" id="check" 14_0="" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" id="newcheck2" value="yes" ng-model="patientDetails['details'].question8">
+								<label class="form-check-label" for="newcheck2">Yes</label>
+								<div class="col-md-6 soopsContainer" id="txt21-col0">
+								<div class="md-form form-sm soopsControl" ng-show="patientDetails['details'].question8=='yes'"  id="txt22">
+									<i class="prefix"></i>
+									<input type="text" id="patient-locality" ng-model="patientDetails['details'].answer8" class="form-control ">
+									
+									<label for="patient-locality">How Much?</label>
+								</div>
+						</div>
+		</div>
+		<div class="form-check form-check-inline soopsControl" id="check" 14_2="">
+								<input type="radio" class="form-check-input" value="no" id="newcheck3" ng-model="patientDetails['details'].question8">
+								<label class="form-check-label" for="newcheck3">No</label>
+		</div>
+		<h6 id="Label15" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Do you take recreational drugs?</h6>
+		<div class="form-check form-check-inline soopsControl" id="newcheck3" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" value="yes" id="newcheck4" ng-model="patientDetails['details'].question9">
+								<label class="form-check-label" for="newcheck4">Yes</label>
+								<div class="col-md-6 soopsContainer" id="txt21-col0">
+								<div class="md-form form-sm soopsControl" ng-show="patientDetails['details'].question9=='yes'"  id="txt22">
+									<i class="prefix"></i>
+									<input type="text" id="patient-locality" ng-model="patientDetails['details'].answer9" class="form-control ">
+									
+									<label for="patient-locality">Describe</label>
+								</div>
+						</div>
+		</div>
+		<div class="form-check form-check-inline soopsControl" id="check">
+								<input type="radio" class="form-check-input" value="no" id="newcheck5" ng-model="patientDetails['details'].question9">
+								<label class="form-check-label" for="newcheck5"> No</label>
+		</div>
+		<h6 id="label16" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Are you on any medications?</h6>
+		<div class="form-check form-check-inline soopsControl" id="check17_0" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" value="yes" id="newcheck6" ng-model="patientDetails['details'].question10">
+								<label class="form-check-label" for="newcheck6">Yes</label>
+								<div class="col-md-6 soopsContainer" id="txt21-col0">
+								<div class="md-form form-sm soopsControl" ng-show="patientDetails['details'].question10=='yes'"  id="txt22">
+									<i class="prefix"></i>
+									<input type="text" id="patient-locality" ng-model="patientDetails['details'].answer10" class="form-control ">
+									
+									<label for="patient-locality">How Much?</label>
+								</div>
+						</div>
+		</div>
+		<div class="form-check form-check-inline soopsControl" id="check17_1">
+								<input type="radio" class="form-check-input" value="no" id="newcheck7" ng-model="patientDetails['details'].question10">
+								<label class="form-check-label" for="newcheck7"> No</label>
+		</div>
+		<h6 id="label" 24="" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Are you addicted to any kind of substance abuse?</h6>
+		<div class="form-check form-check-inline soopsControl" id="check14_0" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" id="newcheck8" value="yes" ng-model="patientDetails['details'].question11">
+								<label class="form-check-label" for="newcheck8">Yes</label>
+								<div class="col-md-6 soopsContainer" id="txt21-col0">
+								<div class="md-form form-sm soopsControl" ng-show="patientDetails['details'].question11=='yes'"  id="txt22">
+									<i class="prefix"></i>
+									<input type="text" id="patient-locality" ng-model="patientDetails['details'].answer11" class="form-control ">
+									
+									<label for="patient-locality">Describe</label>
+								</div>
+						</div>
+		</div>
+		<div class="form-check form-check-inline soopsControl" id="check14_1">
+								<input type="radio" class="form-check-input"  value="no" id="newcheck9" ng-model="patientDetails['details'].question11">
+								<label class="form-check-label" for="newcheck9" > No</label>
+		</div>
+		<h5 id="label" 17="" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top:10px;margin-top: 20px;">Emotional Trauma:</h5>
+		<h6 id="label18" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Have you ever been victiom of abuse, physical, sexual, emotional or any type of abuse?</h6>
+		<div class="form-check form-check-inline soopsControl" id="chck15_0" style="margin-left: 10px;">
+							<!--	<input type="checkbox" class="form-check-input" id="newcheck11" ng-model="patientDetails['details'].question12">-->
+							<input type="radio" class="form-check-input" id="newcheck10" value="yes" ng-model="patientDetails['details'].question12">
+								<label class="form-check-label" for="newcheck10">Yes</label>	
+		</div>
+		<div class="form-check form-check-inline soopsControl" id="chck15_1">
+								<input type="radio" class="form-check-input" id="newcheck12" value="no" ng-model="patientDetails['details'].question12">
+								<label class="form-check-label" for="newcheck12">No</label>
+							</div>
+		<h6 id="label21" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">
+		Have you experienced any trauma including loss and grief?</h6>
+							<div class="form-check form-check-inline soopsControl" id="check21_0" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" id="newcheck13" value="yes" ng-model="patientDetails['details'].question13">
+								<label class="form-check-label" for="newcheck13">Yes</label>
+							</div>
+							<div class="form-check form-check-inline soopsControl" id="check21_1">
+								<input type="radio" class="form-check-input" id="newcheck14" value="no" ng-model="patientDetails['details'].question13">
+								<label class="form-check-label" for="newcheck14"> No</label>
+							</div><h5 id="label22" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-top: 20px;margin-right:20px;">
+							Spiritual Awareness :</h5>
+							<h6 id="label23" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">
+							Do you have specific faith based belief?</h6>
+							<div class="form-check form-check-inline soopsControl" id="check23_0" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" value="yes" id="newcheck17" ng-model="patientDetails['details'].question14">
+								<label class="form-check-label" for="newcheck17">Yes</label>
+							</div>
+							<div class="form-check form-check-inline soopsControl" id="check23_1">
+								<input type="radio" class="form-check-input" value="no" id="newcheck18" ng-model="patientDetails['details'].question14">
+								<label class="form-check-label" for="newcheck18">No</label>
+							</div>
+							<h6 id="label24" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">
+							How important is it to care for your spiritual wellbring? ( 1 being least healthy and 10 being most )</h6>
+							<div class="md-form form-sm soopsControl" id="text565">
+								<i class="prefix"></i>
+								<input type="text" id="spiritualWellbring" class="form-control " ng-model="patientDetails['details'].question15">
+								
+								<label for="spiritualWellbring" class="">Your Answer:</label></div>
+			
+			</div>
+					   </div>
+
+		
+    <div class="card " style="
+    margin-top: 20px">
+		   				<div class="card-body soopsContainer" id="panel_896878">
+						<div class="row soopsControl" id="panel_896878"><div class="col-md-8 soopsContainer" id="panel_896878-col0">
+						<h4 id="label31" class="soopsControl" style="margin-top:20px; margin-left: 20px; margin-bottom: 18px !important; color: #1a8cff;">SVOI-PATIENT HISTORY FORM :</h4></div><div class="col-md-4 soopsContainer" id="panel_896878-col1">
+						
+			</div></div>
+			<h5 id="text35" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;">Lifestyle,Wellness and Exercise :</h5><h6 id="text36" class="soopsControl" style="margin-top:20px;margin-left:20px;margin-right:20px;">What is your current activity level?</h6><div class="form-check form-check-inline soopsControl" id="check32_0" style="
+    margin-left: 20px;">
+								<input type="radio" class="form-check-input" value="Sedentary" id="newcheck20" ng-model="patientDetails['details'].question16">
+								<label class="form-check-label" for="newcheck20">Sedentary</label>
+							</div><div class="form-check form-check-inline soopsControl" id="check32_1">
+								<input type="radio" class="form-check-input" value="SomeWhatActive" id="newcheck21" ng-model="patientDetails['details'].question16">
+								<label class="form-check-label" for="newcheck21" style="
+    margin-left: 20px;"> Some What Active</label>
+							</div><div class="form-check form-check-inline soopsControl" id="check32_2">
+								<input type="radio" class="form-check-input" value="Active" id="newcheck22" ng-model="patientDetails['details'].question16">
+								<label class="form-check-label" for="newcheck22" style="
+    margin-left: 20px;">Active</label>
+							</div><div class="form-check form-check-inline soopsControl" id="check32_3">
+								<input type="radio" class="form-check-input" value="VeryActive"  id="newcheck23" ng-model="patientDetails['details'].question16">
+								<label class="form-check-label" for="newcheck23" style="
+    margin-left: 20px;"> Very Active</label>
+							</div>
+<h6 id="text39" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">Describe your current exercise schedule including type,frequency and duration.</h6>
+<div class="md-form form-sm soopsControl" id="text35">
+			<i class="prefix"></i>
+			<input type="text" id="exerciseSchedule" class="form-control " ng-model="patientDetails['details'].question17">
+			
+			<label for="exerciseSchedule">Your Answer:</label></div><h6 id="text34" class="soopsControl" style="margin-left:20px;margin-right:20px;margin-top: 20px;">With one being lowest and ten being highest please rate your current levels below.</h6><div class="md-form form-sm soopsControl" id="text35">
+			<i class="prefix"></i>
+			<input type="text" id="stressLevel" class="form-control " ng-model="patientDetails['details'].question18">
+			
+			<label for="stressLevel">Stress Level:</label></div><div class="md-form form-sm soopsControl" id="text36">
+			<i class="prefix"></i>
+			<input type="text" id="energyLevel" class="form-control " ng-model="patientDetails['details'].question18">
+			
+			<label for="energyLevel">Energy Level:</label></div><div class="md-form form-sm soopsControl" id="text37">
+			<i class="prefix"></i>
+			<input type="text" id="sleepQuality" class="form-control " ng-model="patientDetails['details'].question19">
+			
+			<label for="sleepQuality" class="">Sleep Quality Level:</label></div><div class="row soopsControl" id="text38">
+			<div class="col-md-7 soopsContainer" id="text38-col0">
+						</div>
+			</div>
+			
+						</div>
+					   </div>
+
+		
+    <div class="card" style="margin-top: 20px;">
+
+				<div class="card-body soopsContainer" id="panel_578891"><div class="row soopsControl" id="panel_578891"><div class="col-md-8 soopsContainer" id="panel_578891-col0">
+				<h4 id="label41" class="soopsControl" style="margin-top:20px;margin-left: 20px;margin-bottom: 18px !important;color: #1a8cff;">
+				SVOI-PATIENT HISTORY FORM</h4></div><div class="col-md-4 soopsContainer" id="panel_578891-col1">
+
+			</div></div>
+			<h5 id="label" 42="" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;">Nutrition :</h5>
+			<h6 id="label43" class="soopsControl" style="margin-top:20px;margin-left:20px;margin-right:20px;">How healthy do your consider your daily eating on a scale of 1-10 ( 1 being least healthy and 10 being very healthy )</h6>
+			<div class="md-form form-sm soopsControl" id="text41">
+			<i class="prefix"></i>
+			<input type="text" id="eatingScale" class="form-control " ng-model="patientDetails['details'].question20">
+			
+			<label for="eatingScale">Healthy Eating:</label></div>
+			<h5 id="label" 44="" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;">On an average day what do you eat?</h5>
+			<div class="md-form form-sm soopsControl" id="text42">
+			<i class="prefix"></i>
+			<input type="text" id="eatWhat" class="form-control " ng-model="patientDetails['details'].question21">
+			
+			<label for="eatWhat">Your Answer</label></div>
+			<div class="card " style="margin-top: 20px;">
+		   				
+					   </div>
+					   <h6 id="label45" class="soopsControl" style="margin-top:20px;margin-left:20px;margin-right:20px;">Are you on a "diet" or have been before? (please tick all relevent)</h6>
+					   <div class="form-check form-check-inline soopsControl" id="chck1_0" style="margin-left: 20px;">
+					   
+								<input type="radio" class="form-check-input" value="yes" id="newcheck24" ng-model="patientDetails['details'].question22">
+								<label class="form-check-label" for="newcheck24">Yes</label>
+							</div>
+							<div class="form-check form-check-inline soopsControl" id="chck1_1">
+								<input type="radio" class="form-check-input" value="no" id="newcheck25" ng-model="patientDetails['details'].question22">
+								<label class="form-check-label" for="newcheck25"> No</label>
+							</div>
+							<h6 id="label46" class="soopsControl" style="margin-top:20px;margin-left:20px;margin-right:20px;">Do you have any eating habits triggered by stress and circumstance?</h6>
+							<div class="form-check form-check-inline soopsControl" id="check2_0" style="margin-left: 20px;">
+								<input type="radio" class="form-check-input" value="yes" id="newcheck26" ng-model="patientDetails['details'].question23">
+								<label class="form-check-label" for="newcheck26">Yes </label>
+							</div>
+							<div class="form-check form-check-inline soopsControl" id="check2_1">
+								<input type="radio" class="form-check-input" value="no" id="newcheck27" ng-model="patientDetails['details'].question23">
+								<label class="form-check-label" for="newcheck27">No</label>
+							</div>
+							
+			
+						</div>
+					   </div>
+
+		
+    <div class="card " style="
+    margin-top: 20px;">
+		   				<div class="card-body soopsContainer" id="panel_537476" style="
+    margin-top: 20px;"><div class="row soopsControl" id="panel_537476"><div class="col-md-8 soopsContainer" id="panel_537476-col0">
+						<h4 id="label51" class="soopsControl" style="margin-top:20px;margin-left: 20px;margin-bottom: 18px !important;color: #1a8cff;">Yoga Schedules :</h4></div><div class="col-md-4 soopsContainer" id="panel_537476-col1">
+						</div></div><h6 id="label52" class="soopsControl" style="margin-top:20px;margin-left:20px;margin-right:20px;">Do you permit us to liaise with other health professionals that you are currently consulting with e.g. physiotherapist, doctor, and naturopath?</h6><div class="form-check form-check-inline soopsControl" id="check53_0" style="
+    margin-left: 20px;">
+								<input type="radio" class="form-check-input" value="yes" id="newcheck28" ng-model="patientDetails['details'].question24">
+								<label class="form-check-label" for="newcheck28">Yes</label>
+							</div><div class="form-check form-check-inline soopsControl" id="check53_1">
+								<input type="radio" class="form-check-input" value="no" id="newcheck29" ng-model="patientDetails['details'].question24">
+								<label class="form-check-label" for="newcheck29"> No</label>
+							</div><h5 id="label54" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">
+							Notes :</h5><div class="row soopsControl" id="newbordder"><div class="col-md-1 soopsContainer" id="newbordder-col0">
+						</div><div class="col-md-10 soopsContainer" id="newbordder-col1" style="border-style: solid;">
+						<h5 id="LABEL" 61="" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">Yoga Therapy Plan::</h5>
+
+<h5 id="LABEL" 62="" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">Loosening Exercises:</h5>
+		<div class="md-form form-sm soopsControl" id="text62">
+			<i class="prefix"></i>
+			<input type="text" id="loosening" class="form-control " ng-model="patientDetails['details'].question25">
+			
+			<label for="loosening">Your Answer</label>
+		</div>
+<h5 id="label63" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">Asanas Relaxation:</h5>
+		<div class="md-form form-sm soopsControl" id="text64">
+			<i class="prefix"></i>
+			<input type="text" id="Asanas" class="form-control " ng-model="patientDetails['details'].question26">
+			
+			<label for="Asanas">Your Answer</label>
+		</div>
+
+<h5 id="label65" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">Breathing and Pranayam:</h5>
+		<div class="md-form form-sm soopsControl" id="text65">
+			<i class="prefix"></i>
+			<input type="text" id="breathing" class="form-control " ng-model="patientDetails['details'].question27">
+			
+			<label for="breathing">Your Answer</label>
+		</div>
+<h5 id="label66" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">Meditation:</h5>
+<div class="md-form form-sm soopsControl" id="text66">
+			<i class="prefix"></i>
+			<input type="text" id="meditstion1" class="form-control "ng-model="patientDetails['details'].question28">
+			
+			<label for="meditation1">Your Answer</label></div>
+<h5 id="label63" class="soopsControl" style="font-weight: bold;margin-left:20px;margin-right:20px;margin-top: 20px;">Meditation:</h5>
+<div class="md-form form-sm soopsControl" id="text67">
+			<i class="prefix"></i>
+			<input type="text" id="meditation2" class="form-control " ng-model="patientDetails['details'].question29">
+			
+			<label for="meditation2" class="">Other:</label></div></div><div class="col-md-1 soopsContainer" id="newbordder-col2">
+						</div></div><div class="row soopsControl" id="text670"><div class="col-md-7 soopsContainer" id="text670-col0">
+						</div><div class="col-md-5 soopsContainer" id="text670-col1">
+						<div class="md-form form-sm soopsControl" id="tEXT71">
+			<i class="prefix"></i>
+			[[?model.userDetails.role=="operator"]]
+				<select class="browser-default custom-select client-select"  ng-init="patientDetails['details'].question30"   ng-model="patientDetails['details'].question30">
+					<option ng-repeat="x in allDoctors">{{x.username}}</option>
+					</select>
+				<label for="doctorSign" class="">Dr.</label></div></div></div><div class="row soopsControl" id="tEXT73"><div class="col-md-10 soopsContainer" id="tEXT73-col0">
+			[[?]]
+			[[?model.userDetails.role=="doctor"]]
+				- diagnosed by Dr. [[=(model.userDetails.name)]]
+			[[?]]			
+			[[? model.userDetails.role!="patient"]]
+						</div><div class="col-md-2 soopsContainer soopsSelected" id="tEXT73-col1">
+						<button id="btn22" ng-click="updatehealth()" class="waves-effect waves-light btn btn-primary btn-md  soopsControl"> Save</button></div></div></div>
+					   </div>
+			[[?]]
+#]]

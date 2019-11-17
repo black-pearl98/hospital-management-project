@@ -1,0 +1,45 @@
+---
+layout: home.dot
+title: Login
+---
+ 
+[[##section:
+  <main style="margin-top:20px">
+    <div class="container-fluid">
+
+		<div class="card" style="max-width: 35vw;margin: 0 auto;">
+
+		<h5 class="card-header info-color white-text text-center py-4">
+		<strong>Login</strong>
+		</h5>
+
+	  <!--Card content-->
+	  <div class="card-body px-lg-5 pt-0">
+
+		<!-- Email -->
+		<div class="md-form">
+		<input type="text" id="username" class="form-control" name="uid"  ng-model="loginDetails.id" required>
+		<label for="uid">UserId</label>
+		</div>
+
+		<!-- Password -->
+		<div class="md-form">
+		<input type="password" id="password" class="form-control" name="password"  ng-model="loginDetails.password" required>
+		<label for="password">Password</label>
+		</div>
+		
+
+		<!-- Sign in button -->
+		<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" ng-click="login()">Login</button>
+
+		<!-- Register -->
+
+		<!-- Form -->
+	  </div>
+
+		</div>
+
+		</div>
+	</main>
+#]]
+ 
