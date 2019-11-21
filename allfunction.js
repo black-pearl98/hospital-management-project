@@ -141,7 +141,7 @@ module.exports={
 		  tls: true,
 		  auth: {
 			user: 'swatijha0908@gmail.com',
-			pass: '$weet$hristi123'
+			pass: '***************'
 		  }
 		});
 
