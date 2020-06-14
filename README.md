@@ -71,7 +71,7 @@ To-do list:
 Project is: _running_ but more features can be added later, which are mentioned in To-do-list.
 
 ## Inspiration
-Reference taken from [w3schools.com](https://www.w3schools.com/), [mdBootstrap](https://mdbootstrap.com/), 
+Reference taken from [w3schools](https://www.w3schools.com/), [mdBootstrap](https://mdbootstrap.com/), 
 [Express](https://expressjs.com/en/api.html), [MongoDB](https://docs.mongodb.com/) 
 
 ## Contact
