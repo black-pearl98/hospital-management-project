@@ -15,7 +15,13 @@
 This app contains different modules for admin, operators, doctors and patients. Each user is assigned login credentials by respective user and their session id is stored. The operator can schedule the appointments of every doctor based on their available time slots and individual doctors can view their own appointments. The doctors can also update the health details of the patients which can be checked by the respective patient. 
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot1](./img/screenshot1.png)
+![Example screenshot2](./img/screenshot2.png)
+![Example screenshot3](./img/screenshot3.png)
+![Example screenshot3](./img/screenshot4.png)
+![Example screenshot3](./img/screenshot5.png)
+![Example screenshot3](./img/screenshot6.png)
+![Example screenshot3](./img/screenshot7.png)
 
 ## Technologies
 * Software to be installed: NodeJS, MongoDB, NoSQL Booster
