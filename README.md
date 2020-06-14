@@ -35,10 +35,10 @@ This app contains different modules for admin, operators, doctors and patients. 
 ## Code Examples
 To install all the dependencies:
 `npm install`
-&nbsp;
+\
 To run the application:
 `npm run server.js`
-&nbsp;
+\
 insert this record in the user collection.
 `{ "id": "superadmin",`
     `"password": "superadmin",`
